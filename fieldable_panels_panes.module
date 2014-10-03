@@ -1057,15 +1057,6 @@ function fieldable_panels_panes_entity_edit_form($form, &$form_state) {
     ),
   );
 
-  $form['settings'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Settings'),
-    '#collapsible' => TRUE,
-    '#group' => 'additional_settings',
-    '#tree' => TRUE,
-  );
-  drupal_alter('fieldable_panels_panes_entity_settings_form', $form, $form_state);
-
   $form['revision']['revision'] = array(
     '#type' => 'checkbox',
     '#title' => t('Create new revision'),
@@ -1088,6 +1079,15 @@ function fieldable_panels_panes_entity_edit_form($form, &$form_state) {
       ),
     ),
   );
+
+  $form['settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Settings'),
+    '#collapsible' => TRUE,
+    '#group' => 'additional_settings',
+    '#tree' => TRUE,
+  );
+  drupal_alter('fieldable_panels_panes_entity_settings_form', $form, $form_state);
 
   $language = NULL;
   if (function_exists('entity_language')) {
