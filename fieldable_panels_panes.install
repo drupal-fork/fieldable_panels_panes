@@ -178,6 +178,13 @@ function fieldable_panels_panes_schema() {
         'default' => '',
         'description' => 'The Universally Unique Identifier.',
       ),
+      'settings' => array(
+        'type' => 'text',
+        'size' => 'big',
+        'description' => t('Serialized settings data.'),
+        'serialize' => TRUE,
+        'object default' => array(),
+      ),
     ),
     'primary key' => array('vid'),
     'indexes' => array(
@@ -393,4 +400,19 @@ function fieldable_panels_panes_update_7108() {
   }
 
   return implode('<br />', $messages);
+}
+
+/**
+ * Add database column for settingsellaneous, serialized data.
+ */
+function fieldable_panels_panes_update_7109() {
+  db_add_field('fieldable_panels_panes_revision', 'settings',
+    array(
+      'type' => 'text',
+      'size' => 'big',
+      'description' => t('Serialized settings data.'),
+      'serialize' => TRUE,
+      'object default' => array(),
+    )
+  );
 }

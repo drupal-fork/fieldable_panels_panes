@@ -1057,6 +1057,15 @@ function fieldable_panels_panes_entity_edit_form($form, &$form_state) {
     ),
   );
 
+  $form['settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Settings'),
+    '#collapsible' => TRUE,
+    '#group' => 'additional_settings',
+    '#tree' => TRUE,
+  );
+  drupal_alter('fieldable_panels_panes_entity_settings_form', $form, $form_state);
+
   $form['revision']['revision'] = array(
     '#type' => 'checkbox',
     '#title' => t('Create new revision'),
@@ -1123,6 +1132,7 @@ function fieldable_panels_panes_entity_edit_form_submit($form, &$form_state) {
   $entity->category = $form_state['values']['category'];
   $entity->admin_title = $form_state['values']['admin_title'];
   $entity->admin_description = $form_state['values']['admin_description'];
+  $entity->settings = $form_state['values']['settings'];
 
   $entity->revision = $form_state['values']['revision'];
   // Only set a log message if there was a new revision. This prevents

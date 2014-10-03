@@ -41,7 +41,7 @@ class PanelsPaneController extends DrupalDefaultEntityController {
 
     // We need to go through and unserialize our serialized fields.
     foreach ($queried_entities as $entity) {
-      foreach (array('view_access', 'edit_access') as $key) {
+      foreach (array('view_access', 'edit_access', 'settings') as $key) {
         if (is_string($entity->$key)) {
           $entity->$key = unserialize($entity->$key);
         }

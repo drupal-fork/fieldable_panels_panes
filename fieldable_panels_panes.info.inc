@@ -145,6 +145,12 @@ function fieldable_panels_panes_entity_property_info() {
     'type' => 'boolean',
     'description' => t('Whether saving this FPP creates a new revision.'),
   ) + $default_properties;
+  $properties['settings'] = array(
+    'label' => t("Settings"),
+    'type' => 'text',
+    'schema field' => 'settings',
+    'description' => t("Serialized settings data."),
+  ) + $default_properties;
 
   return $info;
 }
